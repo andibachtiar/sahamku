@@ -22,7 +22,7 @@ class User extends Migration
             ],
             'password' => [
                 'type' => 'VARCHAR',
-                'constraint' => 20,
+                'constraint' => 100,
             ],
             'role' => [
                 'type' => 'ENUM',

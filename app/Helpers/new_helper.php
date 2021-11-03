@@ -1,6 +1,6 @@
 <?php
 
-
+// show form feedback message
 function feedback($field)
 {
   $validation = \Config\Services::validation();
@@ -18,17 +18,30 @@ function feedback($field)
   }
 }
 
-function flashMessage($flash, $type)
+// Show notification message
+function flashMessage()
 {
   $string = "
-  <div class='alert alert-%s' role='alert'>
+  <div class='alert alert-%s text-center' role='alert'>
     %s
   </div>
   ";
 
-  if ($flash) {
-    echo sprintf($string, $type, $flash);
-  } else {
+  if (!session()->getFlashData()) {
     return false;
+  }
+  if (session()->getFlashData('success')) {
+    echo sprintf($string, 'success', session()->getFlashData('success'));
+  } elseif (session()->getFlashData('danger')) {
+    echo sprintf($string, 'danger', session()->getFlashData('danger'));
+  }
+}
+
+function validInput($field)
+{
+  $validation = \Config\Services::validation();
+
+  if ($validation->hasError($field)) {
+    echo 'is-invalid';
   }
 }

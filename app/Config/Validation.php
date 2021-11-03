@@ -69,5 +69,22 @@ class Validation
     //--------------------------------------------------------------------
     // Sign In Rules
     //--------------------------------------------------------------------
-    public $signin;
+    public $signin = [
+        'email' => 'required|valid_email|is_not_unique[users.email.where_field.where_value]',
+        'password' => 'required|alpha_numeric|min_length[8]|max_length[20]',
+    ];
+
+    public $signin_errors = [
+        'email' => [
+            'required' => 'Email tidak boleh kosong',
+            'valid_email' => 'Format email tidak valid',
+            'is_not_unique' => 'Email tidak terdaftar'
+        ],
+        'password' => [
+            'required' => 'Password tidak boleh kosong',
+            'alpha_numeric' => 'Hanya boleh menggunakan alfabet dan nomor',
+            'min_length' => 'panjang minimal 8 karakter',
+            'max_length' => 'panjang maksimal 20 karakter'
+        ],
+    ];
 }

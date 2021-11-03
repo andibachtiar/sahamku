@@ -10,11 +10,19 @@
 </head>
 
 <body>
-  <?= $this->include('layout/navbar') ?>
-  <section id="main-section">
+  <header>
+    <?= $this->include('layout/navbar') ?>
+  </header>
+  <main>
+    <!-- flash  Message -->
+    <?php flashMessage(); ?>
+
+    <!-- Main Content -->
     <?= $this->renderSection('content') ?>
-  </section>
-  <?= $this->include('layout/footer') ?>
+  </main>
+  <footer>
+    <?= $this->include('layout/footer') ?>
+  </footer>
 
   <script src="<?= base_url('/js/bootstrap.min.js') ?>"></script>
   <script src="<?= base_url('/js/bootstrap.bundle.min.js') ?>"></script>

@@ -1,8 +1,7 @@
 <?php $this->extend('layout/main') ?>
 
 <?php $this->section('content') ?>
-<div class="container">
-  <?php flashMessage($session->getFlashData('notif'), $session->getFlashData('type')) ?>
+<section class="container">
   <div class="row">
     <div class="col-md-5">
       <div class="card">
@@ -13,17 +12,17 @@
           <form action="register" method="post" class="needs-validation">
             <?= csrf_field() ?>
             <div class="form-floating">
-              <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="<?= old('email') ?>">
+              <input type="text" class="form-control <?php validInput('email') ?>" id="email" placeholder="Enter email" name="email" value="<?= old('email') ?>">
               <label for="email">Email</label>
               <?php feedback('email'); ?>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+              <input type="password" class="form-control <?php validInput('password') ?>" id="password" placeholder="Enter password" name="password">
               <label for="password">Password</label>
               <?php feedback('password') ?>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="passwordConfirm" placeholder="Enter password" name="passwordConfirm">
+              <input type="password" class="form-control <?php validInput('passwordConfirm') ?>" id="passwordConfirm" placeholder="Enter password" name="passwordConfirm">
               <label for="passwordConfirm">Konfirmasi Password</label>
               <?php feedback('passwordConfirm') ?>
             </div>
@@ -39,5 +38,5 @@
       <h3>berdasarkan analisa fundamental perusahaan</h3>
     </div>
   </div>
-
-  <?php $this->endSection() ?>
+</section>
+<?php $this->endSection() ?>
