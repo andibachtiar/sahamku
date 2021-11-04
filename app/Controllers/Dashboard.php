@@ -18,6 +18,7 @@ class Dashboard extends BaseController
     {
         return view('dashboard/bobot');
     }
+
     public function result()
     {
         return view('dashboard/result');

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AuthModel;
+use App\Controllers\Vikor;
 
 class Auth extends BaseController
 {
@@ -61,12 +62,20 @@ class Auth extends BaseController
         ];
         // Insert data into user table
         $createUser = $this->model->insert($data);
+
         // If insert data failed, redirect back
         if (!$createUser) {
             return redirect()->back()->with('danger', 'Ada kesalahan! mohon coba beberapa saat lagi');
         }
+        // Make new row for bobot perbankan and bobot non perbankan table
+        $vikor = new Vikor();
+        $makePerbankan = $vikor->CreateBobotPerbankan($createUser);
+        $makeNonPerbankan = $vikor->createBobotNonPerbankan($createUser);
+
         // If success redirect to login page
-        return redirect()->to('login')->with('success', 'Pendaftaran akun berhasil');
+        if ($makePerbankan && $makeNonPerbankan) {
+            return redirect()->to('login')->with('success', 'Pendaftaran akun berhasil');
+        }
     }
 
     public function logout()
