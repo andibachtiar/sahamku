@@ -87,4 +87,73 @@ class Validation
             'max_length' => 'panjang maksimal 20 karakter'
         ],
     ];
+
+    public $bobot = [
+        'car' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'nim' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'npm' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'ldr' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'eps' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'roa' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'roe' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'eva' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+        'tato' => 'require|integer|greater_than[0]|less_than_equal_to[100]',
+    ];
+
+    public $bobot_errors = [
+        'car' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'nim' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'npm' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'ldr' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'eps' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'roa' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'roe' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'eva' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ],
+        'tato' => [
+            'required' => 'Kolom tidak boleh kosong',
+            'integer' => 'Kolom hanya boleh berisi bilangan bulat',
+            'greater_than' => 'Bobot tidak boleh lebih kecil dari 0%',
+            'less_than_' => 'Bobot tidak boleh lebih besar dari 0%'
+        ]
+    ];
 }

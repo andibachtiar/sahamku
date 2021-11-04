@@ -24,8 +24,10 @@
     <?= $this->include('layout/footer') ?>
   </footer>
 
+
   <script src="<?= base_url('/js/bootstrap.min.js') ?>"></script>
   <script src="<?= base_url('/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?= base_url('/js/script.js') ?>"></script>
 </body>
 
 </html>

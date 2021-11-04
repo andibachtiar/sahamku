@@ -9,50 +9,45 @@ class BobotNonPerbankan extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id_bobot' => [
+            'id_rasio' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
                 'auto_increment' => true
             ],
-            'id_user' => [
+            'id_saham' => [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
             ],
             'roa' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 35
+                'type' => 'DECIMAL',
+                'constraint' => '6,4',
             ],
             'roe' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 28
+                'type' => 'DECIMAL',
+                'constraint' => '6,4',
             ],
             'eps' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 15
+                'type' => 'DECIMAL',
+                'constraint' => '6,4',
             ],
             'eva' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 15
+                'type' => 'DECIMAL',
+                'constraint' => '6,4',
             ],
             'tato' => [
-                'type' => 'INT',
-                'constraint' => 5,
-                'default' => 7
-            ],
+                'type' => 'DECIMAL',
+                'constraint' => '6,4',
+            ]
         ]);
-        $this->forge->addPrimaryKey('id_bobot');
-        $this->forge->addForeignKey('id_user', 'users', 'id_user');
-        $this->forge->createTable('bobot_non_perbankan');
+        $this->forge->addPrimaryKey('id_rasio');
+        $this->forge->addForeignKey('id_saham', 'saham', 'id_saham');
+        $this->forge->createTable('rasio_non_perbankan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('bobot_non_perbankan');
+        $this->forge->dropTable('rasio_non_perbankan');
     }
 }

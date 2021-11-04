@@ -36,7 +36,7 @@ class Auth extends BaseController
 
         // If password wrong redirect back
         if (!$hashPassword) {
-            return redirect()->back()->with('danger', 'Email dan Password tidak sesuai');
+            return redirect('/login')->with('danger', 'Email dan Password tidak sesuai');
         }
         session()->set('loggedIn', $user->id_user);
         return redirect()->to('/')->with('success', 'Selamat datang di <strong>LQ45QU</strong>');
@@ -81,6 +81,6 @@ class Auth extends BaseController
     public function logout()
     {
         session()->remove('loggedIn');
-        return redirect()->route('login')->with('danger', 'Log out berhasil');
+        return redirect()->to('login')->with('danger', 'Kamu telah Log Out dari sistem');
     }
 }
