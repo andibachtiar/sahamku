@@ -9,12 +9,10 @@ use App\Controllers\Vikor;
 class Auth extends BaseController
 {
     public $model;
-    public $validation;
 
     public function __construct()
     {
         $this->model = new AuthModel();
-        $this->validation = \Config\Services::validation();
     }
     public function index()
     {

@@ -1,6 +1,9 @@
 <?php
 
 // show form feedback message
+
+use Faker\Guesser\Name;
+
 function feedback($field)
 {
   $validation = \Config\Services::validation();
@@ -44,4 +47,11 @@ function validInput($field)
   if ($validation->hasError($field)) {
     echo 'is-invalid';
   }
+}
+
+function csrf($class)
+{
+  $token = csrf_token();
+  $hash = csrf_hash();
+  return "<input type='hidden' Name='$token' value='$hash' class='$class'>";
 }

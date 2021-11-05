@@ -5,6 +5,8 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Controllers\Auth;
+use Config\Services;
 
 class AuthFilter implements FilterInterface
 {
@@ -25,9 +27,19 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('loggedIn')) {
+        helper('auth');
+        // current path
+        $current = current_url(true)->getPath();
+        // if not log loggedIn only can access login and register page
+        if (!loggedIn()) {
+            if (in_array($current, [route_to('login'), route_to('register')])) {
+                return;
+            }
             return redirect()->route('login')->with('danger', "Lakukan login terlebih dahulu");
-        } else {
+        }
+        // if login cant access login and register page
+        if (in_array($current, [route_to('login'), route_to('register')])) {
+            return redirect()->back();
         }
     }
 
@@ -45,6 +57,5 @@ class AuthFilter implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        //
     }
 }

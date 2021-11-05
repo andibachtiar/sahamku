@@ -8,12 +8,10 @@ use App\Models\SahamModel;
 class Dashboard extends BaseController
 {
     public $db;
-    public $validation;
 
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->validation = \Config\Services::validation();
     }
 
     public function index()
@@ -34,15 +32,16 @@ class Dashboard extends BaseController
         ];
         return view('dashboard/financial', $data);
     }
+
     public function bobot()
     {
-
-        $perbankan = $this->db->table('bobot_perbankan')->where('id_user', userId())->get()->getFirstRow();
-        $nonPerbankan = $this->db->table('bobot_non_perbankan')->where('id_user', userId())->get()->getFirstRow();
+        $perbankan = $this->db->table('bobot_perbankan')->where('id_user', loggedIn())->get()->getFirstRow();
+        $nonPerbankan = $this->db->table('bobot_non_perbankan')->where('id_user', loggedIn())->get()->getFirstRow();
         $data = [
             'heading' => 'Bobot kriteria diambil dari berbagai penelitian terkait pengaruh rasio keuangan pada kinerja harga saham pada bursa efek Indonesia.',
             'perbankan' => $perbankan,
-            'nonPerbankan' => $nonPerbankan
+            'nonPerbankan' => $nonPerbankan,
+            'data' => $dataaa ?? 'oke'
         ];
         return view('dashboard/bobot', $data);
     }

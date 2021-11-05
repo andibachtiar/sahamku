@@ -25,7 +25,18 @@ class RoleFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        helper('auth');
+        // if not logged in redirect to login page
+        if (!loggedIn()) {
+            return redirect()->to('login')->with('danger', 'Login terlebih dahulu');
+        }
+        // check user groups
+        foreach ($arguments as $group) {
+            if (inGroup($group)) {
+                return;
+            }
+        }
+        return redirect()->back()->with('danger', 'Anda tidak mempunyai hak akses!');;
     }
 
     /**
